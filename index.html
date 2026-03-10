@@ -264,9 +264,9 @@
             .then(r => r.json())
             .then(files => {
                 const list = document.getElementById('list');
-                files.forEach(file => {
-                    list.innerHTML += `<div><a href="post.html?file=${file}.md" class="box">${file}</a></div>`;
-                });
+               files.forEach(file => {
+  list.innerHTML += `<div><a href="post.html?file=${encodeURIComponent(file)}.md" class="box">${file}</a></div>`;
+});
             });
     </script>
 
