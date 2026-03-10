@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        #list {
-            display: block;
-            width: 500px;
-            margin: 0 auto;
-            font-size: 150%;
-            text-decoration: none;
-        }
-    </style>
-
-    <style>
-        .logo { text-decoration: none; color: rgba(255, 255, 255, 0.9); }
-
-        .box {
+  <title>Bài viết</title>
+  <style> 
+  .box {
             font-weight: bold;
             color: #1a1a2e;
             text-decoration: none;
-            width: 500px;
+            width: 500px; /* thay vì 500px cố định */
             display: block;
             padding: 20px;
+            background: rgb(255, 255, 255);
             margin: 40px auto;
             line-height: 1.6;
             border-radius: 20px;
@@ -31,49 +21,12 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
-
-        /* ===== NÚT XÓA ===== */
-        .post-item {
-            position: relative;
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        .post-item .box {
-            margin: 40px auto;
-            padding-right: 70px; /* tránh chữ bị che bởi nút xóa */
-        }
-
-        .btn-delete {
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            background: rgba(255, 80, 80, 0.55);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 120, 120, 0.4);
-            border-radius: 10px;
-            color: white;
-            padding: 6px 14px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .btn-delete:hover {
-            background: rgba(255, 60, 60, 0.8);
-            transform: translateY(-52%);
-        }
-    </style>
-
-    <style>
         header {
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            color: rgb(0, 0, 0);
             margin: 40px auto;
             line-height: 1.6;
             border-radius: 20px;
@@ -86,291 +39,36 @@
             padding: 10px 20px;
             font-size: 200%;
             font-family: 'Playfair Display', serif;
+            line-height: 1.6;
             border-radius: 20px;
         }
-
-        body {
-            background-image: url("https://static.freepsdfiles.net/uploads/2017/03/beautiful-nature-background_psd.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-        body h2 { color: #1a1a2e; }
-        body p  { color: #1a1a2e; }
-    </style>
-
-    <style>
-        .modal {
-            background-color: rgba(0, 0, 0, 0.35);
-            opacity: 0;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            transition: all 0.3s ease-in-out;
-            z-index: -1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.open {
-            opacity: 1;
-            z-index: 999;
-        }
-
-        .modal-inner {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            border-left: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
-            border-radius: 20px;
-            padding: 32px;
-            width: 420px;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .modal.open .modal-inner {
-            transform: translateY(0);
-        }
-
-        .modal-inner h2 {
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .form-group {
-            display: block;
-            width: 100%;
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            display: block;
-            width: 100%;
-            padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border 0.2s;
-            font-family: inherit;
-            resize: none;
-            box-sizing: border-box;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.45);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: rgba(255, 255, 255, 0.7);
-        }
-
-        .btn-modal {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            border-left: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 10px 24px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
-        }
-
-        .btn-modal:hover {
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn-modal:active {
-            transform: translateY(0px);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 24px;
-        }
-
-        .btn-submit {
-            flex: 1;
-            padding: 11px;
-            background: #4f46e5;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-submit:hover { background: #3730a3; }
-
-        .btn-close {
-            flex: 1;
-            padding: 11px;
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-close:hover { background: rgba(255, 255, 255, 0.25); }
-    </style>
+    body {
+        min-height: 100vh;  /* thêm dòng này */
+    margin: 0;
+        background-image: url("	https://frutigeraeroarchive.org/images/introduction/asadal.jpg");
+        background-position: center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+   
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <a href="#" class="logo">🌿 BLOG Của khanwnat</a>
-        <button class="btn-modal" id="openModal">Đăng</button>
-    </header>
+<header >
+  <a href="index.html">← Quay về</a>
+</header>
+  <div id="content" class = "box">Đang tải...</div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const file = params.get('file');
+  fetch(`posts/${file}.md`)
+    .then(r => r.text())
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+    });
+</script>
 
-    <div id="list"></div>
-
-    <div class="modal" id="modal">
-        <div class="modal-inner">
-            <h2> Tạo bài đăng</h2>
-
-            <div class="form-group">
-                <label for="titleInput">Tiêu đề</label>
-                <input type="text" id="titleInput" placeholder="Nhập tiêu đề...">
-            </div>
-
-            <div class="form-group">
-                <label for="contentInput">Nội dung</label>
-                <textarea id="contentInput" rows="16" placeholder="Nhập nội dung..."></textarea>
-            </div>
-
-            <div class="modal-actions">
-                <button class="btn-submit" id="submitModal">ĐĂNG</button>
-                <button class="btn-close" id="closeModal">ĐÓNG</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const WORKER_URL = "https://sparkling-bonus-7dcb.dogiabao21112006.workers.dev";
-
-        // ===== LOAD DANH SÁCH BÀI =====
-        fetch('posts/posts.json')
-            .then(r => r.json())
-            .then(files => {
-                const list = document.getElementById('list');
-                files.forEach(file => {
-    const div = document.createElement('div');
-    div.className = 'post-item';
-    div.innerHTML = `
-        <a href="post.html?file=${file}.md" class="box">${file}</a>
-        <button class="btn-delete" onclick="deletePost('${file}.md')">🗑 Xóa</button>
-    `;
-    list.appendChild(div);
-});
-            });
-
-        // ===== XÓA BÀI =====
-        async function deletePost(slug) {
-            if (!confirm(`Xóa bài "${slug}"?`)) return;
-
-            try {
-                const res = await fetch(WORKER_URL, {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ slug })
-                });
-
-                const data = await res.json();
-                if (data.ok) {
-                    alert("✅ Đã xóa!");
-                    location.reload();
-                } else {
-                    alert("❌ Lỗi: " + data.error);
-                }
-            } catch (err) {
-                alert("❌ Không kết nối được Worker");
-            }
-        }
-
-        // ===== MODAL =====
-        const openBtn   = document.getElementById("openModal");
-        const closeBtn  = document.getElementById("closeModal");
-        const submitBtn = document.getElementById("submitModal");
-        const modal     = document.getElementById("modal");
-
-        openBtn.addEventListener("click", () => modal.classList.add("open"));
-        closeBtn.addEventListener("click", () => modal.classList.remove("open"));
-
-        // ===== ĐĂNG BÀI =====
-        submitBtn.addEventListener("click", async () => {
-            const title   = document.getElementById("titleInput").value;
-            const content = document.getElementById("contentInput").value;
-
-            if (!title || !content) {
-                alert("Vui lòng nhập đủ tiêu đề và nội dung!");
-                return;
-            }
-
-            submitBtn.textContent = "Đang đăng...";
-            submitBtn.disabled = true;
-
-            try {
-                const res = await fetch(WORKER_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ title, content })
-                });
-
-                const data = await res.json();
-
-                if (data.ok) {
-                    alert("✅ Đã đăng bài!");
-                    document.getElementById("titleInput").value = "";
-                    document.getElementById("contentInput").value = "";
-                    modal.classList.remove("open");
-                    location.reload();
-                } else {
-                    alert("❌ Lỗi: " + data.error);
-                }
-            } catch (err) {
-                alert("❌ Không kết nối được Worker");
-            } finally {
-                submitBtn.textContent = "ĐĂNG";
-                submitBtn.disabled = false;
-            }
-        });
-    </script>
 </body>
 </html>
