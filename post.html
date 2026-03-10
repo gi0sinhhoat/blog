@@ -62,12 +62,19 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
-const file = params.get('file');
-fetch(`posts/${file}`)   // ✅ bỏ .md ở đây
-  .then(r => r.text())
-  .then(md => {
-    document.getElementById('content').innerHTML = marked.parse(md);
-  });
+  const file = params.get('file');
+
+  fetch(`https://raw.githubusercontent.com/gi0sinhhoat/blog/main/posts/${file}`)
+    .then(r => {
+      if (!r.ok) throw new Error("Không tìm thấy: " + r.status);
+      return r.text();
+    })
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+    })
+    .catch(err => {
+      document.getElementById('content').innerHTML = "❌ " + err.message;
+    });
 </script>
 
 </body>
