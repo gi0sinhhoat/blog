@@ -232,101 +232,93 @@
 </head>
 
 <body>
-   <header>
-  <a href="#" class="logo">🌿 BLOG Của khanwnat</a>
-  <button href="#" class="btn-modal" id="openModal">Đăng</button>
-</header>
-<div id="list"></div>
+    <header>
+        <a href="#" class="logo">🌿 BLOG Của khanwnat</a>
+        <button href="#" class="btn-modal" id="openModal">Đăng</button>
+    </header>
+    <div id="list"></div>
 
-<div class ="modal" id="modal"> 
-   <div class="modal-inner">
-      <h2> Tạo bài đăng</h2>
+    <div class="modal" id="modal">
+        <div class="modal-inner">
+            <h2> Tạo bài đăng</h2>
 
-      <div class="form-group">
-        <label for="titleInput">Tiêu đề</label>
-        <input type="text" id="titleInput" placeholder="Nhập tiêu đề...">
-      </div>
+            <div class="form-group">
+                <label for="titleInput">Tiêu đề</label>
+                <input type="text" id="titleInput" placeholder="Nhập tiêu đề...">
+            </div>
 
-      <div class="form-group">
-        <label for="contentInput">Nội dung</label>
-        <textarea id="contentInput" rows="16" placeholder="Nhập nội dung..."></textarea>
-      </div>
+            <div class="form-group">
+                <label for="contentInput">Nội dung</label>
+                <textarea id="contentInput" rows="16" placeholder="Nhập nội dung..."></textarea>
+            </div>
 
-      <div class="modal-actions">
-        <button class="btn-submit" id="submitModal">ĐĂNG</button>
-        <button class="btn-close" id="closeModal">ĐÓNG</button>
-      </div>
+            <div class="modal-actions">
+                <button class="btn-submit" id="submitModal">ĐĂNG</button>
+                <button class="btn-close" id="closeModal">ĐÓNG</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-    
-  fetch('posts/posts.json')
-    .then(r => r.json())
-      .then(files => {
-     const list = document.getElementById('list');
-       files.forEach(file => { 
-        list.innerHTML += `<div> <a href="post.html?file=${file}"  class="box" >${file}</a></div>`;
-      });
-      });
-   
- 
-</script>
-<script>
-    const openBtn   = document.getElementById("openModal");
-    const closeBtn  = document.getElementById("closeModal");
-    const submitBtn = document.getElementById("submitModal");
-    const modal     = document.getElementById("modal");
+    <script>
+        fetch('posts/posts.json')
+            .then(r => r.json())
+            .then(files => {
+                const list = document.getElementById('list');
+                files.forEach(file => {
+                    list.innerHTML += `<div><a href="post.html?file=${file}.md" class="box">${file}</a></div>`;
+                });
+            });
+    </script>
 
-    openBtn.addEventListener("click", () => {
-      modal.classList.add("open");
-    });
+    <script>
+        const openBtn = document.getElementById("openModal");
+        const closeBtn = document.getElementById("closeModal");
+        const submitBtn = document.getElementById("submitModal");
+        const modal = document.getElementById("modal");
 
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("open");
-    });
+        openBtn.addEventListener("click", () => modal.classList.add("open"));
+        closeBtn.addEventListener("click", () => modal.classList.remove("open"));
 
-    submitBtn.addEventListener("click", async () => {
-  const title   = document.getElementById("titleInput").value;
-  const content = document.getElementById("contentInput").value;
+        submitBtn.addEventListener("click", async () => {
+            const title = document.getElementById("titleInput").value;
+            const content = document.getElementById("contentInput").value;
 
-  if (!title || !content) {
-    alert("Vui lòng nhập đủ tiêu đề và nội dung!");
-    return;
-  }
+            if (!title || !content) {
+                alert("Vui lòng nhập đủ tiêu đề và nội dung!");
+                return;
+            }
 
-  submitBtn.textContent = "Đang đăng...";
-  submitBtn.disabled = true;
+            submitBtn.textContent = "Đang đăng...";
+            submitBtn.disabled = true;
 
-  try {
-    const res = await fetch("https://sparkling-bonus-7dcb.dogiabao21112006.workers.dev", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, content })
-    });
+            try {
+                const res = await fetch("https://sparkling-bonus-7dcb.dogiabao21112006.workers.dev", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ title, content })
+                });
 
-    const data = await res.json();
+                const data = await res.json();
 
-    if (data.ok) {
-      alert("✅ Đã đăng bài!");
-      document.getElementById("titleInput").value = "";
-      document.getElementById("contentInput").value = "";
-      modal.classList.remove("open");
-      location.reload(); // load lại danh sách bài
-    } else {
-      alert("❌ Lỗi: " + data.error);
-    }
-  } catch (err) {
-    alert("❌ Không kết nối được Worker");
-  } finally {
-    submitBtn.textContent = "Đăng";
-    submitBtn.disabled = false;
-  }
-});
-  </script>
+                if (data.ok) {
+                    alert("✅ Đã đăng bài!");
+                    document.getElementById("titleInput").value = "";
+                    document.getElementById("contentInput").value = "";
+                    modal.classList.remove("open");
+                    location.reload();
+                } else {
+                    alert("❌ Lỗi: " + data.error);
+                }
+            } catch (err) {
+                alert("❌ Không kết nối được Worker");
+            } finally {
+                submitBtn.textContent = "ĐĂNG";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 
 
-   
-     
+
 </body>
 </html>
