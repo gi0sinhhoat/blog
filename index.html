@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bài viết</title>
-  <style> 
-  .box {
+    <style>
+        #list {
+            display: block;
+            width: 500px;
+            margin: 0 auto;
+            font-size: 150%;
+            text-decoration: none;
+        }
+
+    </style>
+
+    <style>
+        .logo { text-decoration: none; }
+
+        .box {
             font-weight: bold;
             color: #1a1a2e;
             text-decoration: none;
@@ -21,6 +33,8 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
+    </style>
+    <style>
         header {
             font-weight: bold;
             display: flex;
@@ -42,24 +56,51 @@
             line-height: 1.6;
             border-radius: 20px;
         }
-    body {
-        min-height: 100vh;  /* thêm dòng này */
-    margin: 0;
-        background-image: url("	https://frutigeraeroarchive.org/images/introduction/asadal.jpg");
-        background-position: center;
+        body {
+            
+            h2 {
+                color: #1a1a2e;
+            }
+            p {
+                color: #1a1a2e ;
+                }
+             background-image: url("https://static.freepsdfiles.net/uploads/2017/03/beautiful-nature-background_psd.jpg");
+   
+    background-position: center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
     background-size: cover;
    
-    }
-
-  </style>
+   
+        }
+    </style>
 </head>
-<body>
-<header >
-  <a href="index.html">← Quay về</a>
-</header>
-  <div id="content" class = "box">Đang tải...</div>
 
+<body>
+   <header>
+  <a href="#" class="logo">🌿 BLOG CỦA EM AN</a>
+  <a href="#" class="btn-create">Post</a>
+</header>
+<div id="list"></div>
+
+<script>
+    
+  fetch('posts/posts.json')
+    .then(r => r.json())
+      .then(files => {
+     const list = document.getElementById('list');
+       files.forEach(file => { 
+        list.innerHTML += `<div> <a href="post.html?file=${file}"  class="box" >${file}</a></div>`;
+      });
+      });
+   
+    const files = ["bai-viet-1 32423423", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2"  ];
+    const list = document.getElementById('list');
+    files.forEach(file => {
+        list.innerHTML += `<a href="post.html" class="box">${file}</a>`;
+    });
+</script>
+   
+     
 </body>
 </html>
