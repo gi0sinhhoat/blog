@@ -62,12 +62,12 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
-  const file = params.get('file');
-  fetch(`posts/${file}.md`)
-    .then(r => r.text())
-    .then(md => {
-      document.getElementById('content').innerHTML = marked.parse(md);
-    });
+const file = params.get('file');
+fetch(`posts/${file}`)   // ✅ bỏ .md ở đây
+  .then(r => r.text())
+  .then(md => {
+    document.getElementById('content').innerHTML = marked.parse(md);
+  });
 </script>
 
 </body>
