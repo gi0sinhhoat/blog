@@ -3,21 +3,23 @@
 <head>
     <style>
         #list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: block;
+            width: 500px;
+            margin: 0 auto;
+            font-size: 150%;
+            text-decoration: none;
         }
 
-            #list div {
-                width: 600px; /* hoặc đổi thành width: 100% rồi max-width: 600px */
-            }
     </style>
 
     <style>
         .logo { text-decoration: none; }
 
         .box {
-            width: 100%; /* thay vì 500px cố định */
+            font-weight: bold;
+            color: #1a1a2e;
+            text-decoration: none;
+            width: 500px; /* thay vì 500px cố định */
             display: block;
             padding: 20px;
             background: rgb(255, 255, 255);
@@ -33,30 +35,26 @@
         }
     </style>
     <style>
-        header{
+        header {
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: space-between;
-             color: rgb(0, 0, 0);
-          
-            
+            color: rgb(0, 0, 0);
             margin: 40px auto;
             line-height: 1.6;
             border-radius: 20px;
             border-top: 1px solid rgb(255,255,255,0.4);
-            border-left : 1px solid rgb(255,255,255,0.3);
+            border-left: 1px solid rgb(255,255,255,0.3);
             box-shadow: 3px 3px 3px rgb(0,0,0,0.089);
-            background: rgba(255, 255, 255, 0.027); 
-            backdrop-filter: blur(8px);          
-            -webkit-backdrop-filter: blur(8px);   
-
-
-              padding: 10px 20px;
-            font-size:200%;
-           font-family: 'Playfair Display', serif;
-             line-height: 1.6;
-            border-radius: 20px;    
-            
+            background: rgba(255, 255, 255, 0.027);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 10px 20px;
+            font-size: 200%;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            border-radius: 20px;
         }
         body {
             
@@ -80,29 +78,29 @@
 
 <body>
    <header>
-  <a href="#" class="logo">🌿 Blog của em an</a>
+  <a href="#" class="logo">🌿 BLOG CỦA EM AN</a>
   <a href="#" class="btn-create">Post</a>
 </header>
 <div id="list"></div>
 
 <script>
+    
   fetch('posts/posts.json')
     .then(r => r.json())
-    .then(files => {
-      const list = document.getElementById('list');
-      files.forEach(file => {
+      .then(files => {
+     const list = document.getElementById('list');
+       files.forEach(file => { 
         list.innerHTML += `<div> <a href="post.html?file=${file}"  class="box" >${file}</a></div>`;
       });
+      });
+   
+    const files = ["bai-viet-1 32423423", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2", "bai-viet-2"  ];
+    const list = document.getElementById('list');
+    files.forEach(file => {
+        list.innerHTML += `<a href="post.html" class="box">${file}</a>`;
     });
 </script>
-    
-
    
-
-    <div class="box"> 
-        <h3 > 123</h3>
-    </div>
-        
      
 </body>
 </html>
