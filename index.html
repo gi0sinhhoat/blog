@@ -81,7 +81,7 @@
     .then(files => {
       const list = document.getElementById('list');
       files.forEach(file => {
-        list.innerHTML += `<a href="post.html?file=${file}">${file}</a><br>`;
+        list.innerHTML += `<div> <a href="post.html?file=${file}" class="box" >${file}</a></div>`;
       });
     });
 </script>
