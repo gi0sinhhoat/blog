@@ -73,79 +73,26 @@
   <a href="#" class="logo">🌿 Blog của em an</a>
   <a href="#" class="btn-create">Post</a>
 </header>
+<div id="list"></div>
+
+<script>
+  fetch('posts/posts.json')
+    .then(r => r.json())
+    .then(files => {
+      const list = document.getElementById('list');
+      files.forEach(file => {
+        list.innerHTML += `<a href="post.html?file=${file}">${file}</a><br>`;
+      });
+    });
+</script>
     
 
    
 
-    <div class="box">
-        <h2>Giá mà</h2>
-        <p>
-            giá mà nhịp sống chậm đi<br>
-            vỗ về giấc ngủ, du di cánh diều<br>
-            vòng tay xiết trọn nắng chiều<br>
-            anh quên những buổi đáng yêu trượt dài.
-        </p>
-
-        <p>
-            giá mà anh biết khoan thai<br>
-            ung dung tận hưởng ngày mai, nếu còn<br>
-            vài dòng lấp lửng nớt non<br>
-            làm sao phơi hết ví von tròn đầy.
-        </p>
-
-        <p>
-            giá mà được nắm bàn tay<br>
-            thì hai hôm trước đã say cuộc đời<br>
-            giá mà hạnh phúc gọi mời<br>
-            để cho đau khổ phải rơi lìa cành.
-        </p>
-
-        <p>
-            giá mà anh vẫn còn anh,<br>
-            giá mà anh chịu vẽ xanh tuổi mình…
-        </p>
+    <div class="box"> 
+        <h3 > 123</h3>
     </div>
-    <div class="box">
-        <h2>Tôi </h2>
-        <p>
-            tôi ơi tôi đã chết chưa?<br>
-            tôi đi đến những ngày xưa muộn màng<br>
-            tôi qua muôn dặm quan san<br>
-            để tôi thấy được những tàn dư âm
-        </p>
-
-        <p>
-            tôi về lặn lội trăm năm<br>
-            đôi tay vuốt ánh trăng rằm đêm hôm<br>
-            con ngươi đương độ vô hồn<br>
-            tôi còn cảm giác đau mồn một đau
-        </p>
-
-        <p>
-            tôi tìm tôi của ngày sau<br>
-            có hay không – ở nhịp cầu lương tri?<br>
-            xới tung mảnh đất xuân thì<br>
-            gót chân nứt toác còn gì mà trông!
-        </p>
-
-        <p>
-            tôi nhìn nước cạn đáy sông<br>
-            dần dâng lên đến trời không nặng mình<br>
-            tôi cất tiếng gọi im thinh<br>
-            chờ lời hồi đáp để xin qua đời
-        </p>
-
-        <p>
-            tôi là tôi ở muôn nơi<br>
-            có chăng tan biến rã rời thịt xương<br>
-            tôi hòa vào đất muôn phương<br>
-            lặp đi lặp lại vô thường không gian
-        </p>
-
-        <p>
-            (có đang trong khắc mơ màng?)
-        </p>
-    </div>
+        
      
 </body>
 </html>
