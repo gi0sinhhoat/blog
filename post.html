@@ -45,7 +45,7 @@
     body {
         min-height: 100vh;  /* thêm dòng này */
     margin: 0;
-        background-image: url("	https://frutigeraeroarchive.org/images/introduction/asadal.jpg");
+        background-image: url("	images/aero2.jpg");
         background-position: center;
     background-repeat:  no-repeat;
     background-attachment: fixed;
@@ -63,7 +63,7 @@
 <script>
   const params = new URLSearchParams(location.search);
 const file = params.get('file');
-fetch(`posts/${file}`)   // ✅ bỏ .md ở đây
+fetch(`posts/${file}`)   
   .then(r => r.text())
   .then(md => {
     document.getElementById('content').innerHTML = marked.parse(md);
