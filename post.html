@@ -2,6 +2,37 @@
 <html>
 <head>
   <title>Bài viết</title>
+  <style>
+    .btn-modal {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+        }
+
+        .btn-modal:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn-modal:active {
+            transform: translateY(0px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+  </style>
   <style> 
   .box {
             font-weight: bold;
@@ -55,10 +86,11 @@
   </style>
 </head>
 <body>
-<header >
-  <a href="index.html" >← Quay về</a>
+<header>
+  <button class="btn-modal" onclick="window.location.href='index.html'">← Quay về</button>
 </header>
   <div id="content" class = "box">Đang tải...</div>
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
@@ -69,6 +101,8 @@ fetch(`posts/${file}`)
     document.getElementById('content').innerHTML = marked.parse(md);
   });
 </script>
+
+
 
 </body>
 </html>
