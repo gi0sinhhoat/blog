@@ -1,239 +1,223 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <meta charset="UTF-8">
-     <link rel="icon" href="images/favicon.png" type="image/png">
-      <title>Blog</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Blog</title>
     <style>
-        #list {
-            display: block;
-            width: 500px;
-            margin: 0 auto;
-            font-size: 150%;
-            text-decoration: none;
-        }
-    </style>
-
-    <style>
-        .logo { text-decoration: none;color:rgba(255, 255, 255, 0.9);text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
-
-        .box {
-            font-weight: bold;
-           color:rgba(255, 255, 255, 0.9);text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            text-decoration: none;
-            width: 500px;
-            display: block;
-            padding: 20px;
-            margin: 40px auto;
-            line-height: 1.6;
-            border-radius: 20px;
-            border-top: 1px solid rgb(255,255,255,0.4);
-            border-left: 1px solid rgb(255,255,255,0.3);
-            box-shadow: 3px 3px 3px rgb(0,0,0,0.089);
-            background: rgba(255, 255, 255, 0.027);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-    </style>
-    <style>
-        header {
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 40px auto;
-            line-height: 1.6;
-            border-radius: 20px;
-            border-top: 1px solid rgb(255,255,255,0.4);
-            border-left: 1px solid rgb(255,255,255,0.3);
-            box-shadow: 3px 3px 3px rgb(0,0,0,0.089);
-            background: rgba(255, 255, 255, 0.027);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 10px 20px;
-            font-size: 200%;
-            font-family: 'Playfair Display', serif;
+        body {
+            font-family: 'Be Vietnam Pro', system-ui, sans-serif;
         }
         body {
-            h2 { color: #FFFFFF; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
-            p { color: #FFFFFF; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
             background-image: url("images/aero3.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-    </style>
-    <style>
+        body h2, body p {
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .glass {
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.4);
+            box-shadow:
+                0 8px 32px rgba(0,0,0,0.18),
+                inset 0 1px 0 rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(16px) saturate(1.6);
+            -webkit-backdrop-filter: blur(16px) saturate(1.6);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px auto;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 200%;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        #list { display: block; width: 500px; margin: 0 auto; font-size: 150%; }
+
+        .box {
+            display: block;
+            width: 500px;
+            padding: 20px;
+            margin: 40px auto;
+            font-weight: bold;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .box:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.45);
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.22),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            transform: translateY(-3px) scale(1.01);
+        }
+
+        /* Button */
+        .button {
+            position: relative;
+            border: 1px solid #0360df;
+            border-radius: 50px;
+            padding: 8px 20px;
+            background-color: #0360df;
+            background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent),
+                              radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+            box-shadow: inset 0 -2px 4px 1px rgba(17,110,231,0.6),
+                        inset 0 -4px 4px 1px #8de3fc,
+                        inset 0 0 2px 1px rgba(255,255,255,0.2),
+                        0 1px 4px 1px rgba(17,110,231,0.2),
+                        0 1px 4px 1px rgba(0,0,0,0.1);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 0 1px 1px #116ee7;
+            cursor: pointer;
+            transition: border-color 0.2s, transform 0.2s, background-color 0.2s;
+        }
+        .button::after {
+            content: "";
+            position: absolute;
+            top: 1px; left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px;
+            width: 80%;
+            height: 40%;
+            background-image: linear-gradient(to bottom, #f4feff, transparent);
+            opacity: 0.75;
+            pointer-events: none;
+        }
+        .button:hover { transform: scale(1.04); }
+        .button:active { border-color: #0048d5; transform: scale(0.96); background-color: #0048d5; }
+
+        /* Modal */
         .modal {
-            background-color: rgba(0, 0, 0, 0.35);
+            background-color: rgba(0,0,0,0.35);
             opacity: 0;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            transition: all 0.3s ease-in-out;
+            inset: 0;
+            transition: opacity 0.3s ease-in-out;
             z-index: -1;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .modal.open { opacity: 1; z-index: 999; }
 
         .modal-inner {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            border-left: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.14);
+            backdrop-filter: blur(24px) saturate(1.8);
+            -webkit-backdrop-filter: blur(24px) saturate(1.8);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-top-color: rgba(255,255,255,0.55);
+            border-left-color: rgba(255,255,255,0.4);
+            box-shadow:
+                0 24px 64px rgba(0,0,0,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.4);
             border-radius: 20px;
             padding: 32px;
             width: 420px;
             transform: translateY(-20px);
             transition: transform 0.3s ease-in-out;
         }
-
         .modal.open .modal-inner { transform: translateY(0); }
+        .modal-inner h2 { color: rgba(255,255,255,0.95); margin-bottom: 20px; font-size: 20px; }
 
-        .modal-inner h2 {
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-
-        .form-group {
-            display: block;
-            width: 100%;
-            margin-bottom: 16px;
-        }
-
+        .form-group { margin-bottom: 16px; }
         .form-group label {
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,0.85);
             margin-bottom: 6px;
         }
-
         .form-group input,
         .form-group textarea {
             display: block;
             width: 100%;
             padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.3);
             color: #fff;
             border-radius: 8px;
             font-size: 14px;
             outline: none;
-            transition: border 0.2s;
             font-family: inherit;
             resize: none;
             box-sizing: border-box;
+            transition: border 0.2s;
         }
-
         .form-group input::placeholder,
-        .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
-
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.45); }
         .form-group input:focus,
-        .form-group textarea:focus { border-color: rgba(255, 255, 255, 0.7); }
+        .form-group textarea:focus { border-color: rgba(255,255,255,0.7); }
 
-        .btn-modal {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            border-left: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 10px 24px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
-        }
-
-        .btn-modal:hover {
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn-modal:active {
-            transform: translateY(0px);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 24px;
-        }
-
-        .btn-submit {
+        .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+        .btn-submit, .btn-close {
             flex: 1;
             padding: 11px;
-            background: #4f46e5;
-            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
             border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
         }
-
+        .btn-submit { background: #4f46e5; color: #fff; transition: background 0.2s; }
         .btn-submit:hover { background: #3730a3; }
-
         .btn-close {
-            flex: 1;
-            padding: 11px;
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.3);
             transition: background 0.2s;
         }
-
-        .btn-close:hover { background: rgba(255, 255, 255, 0.25); }
+        .btn-close:hover { background: rgba(255,255,255,0.25); }
     </style>
 </head>
 
 <body>
-    <header>
+    <header class="glass">
         <a class="logo">🌿 BLOG Của khanwnat</a>
-        <button class="btn-modal" id="openModal">Đăng</button>
+        <button class="button" id="openModal">Đăng bài</button>
     </header>
+
     <div id="list"></div>
 
     <div class="modal" id="modal">
         <div class="modal-inner">
             <h2>Tạo bài đăng</h2>
-
             <div class="form-group">
                 <label for="titleInput">Tiêu đề</label>
                 <input type="text" id="titleInput" placeholder="Nhập tiêu đề...">
             </div>
-
             <div class="form-group">
                 <label for="contentInput">Nội dung</label>
                 <textarea id="contentInput" rows="16" placeholder="Nhập nội dung..."></textarea>
             </div>
-
-            <!-- THÊM Ô NHẬP KEY -->
             <div class="form-group">
                 <label for="keyInput">Key</label>
                 <input type="password" id="keyInput" placeholder="Nhập key...">
             </div>
-
             <div class="modal-actions">
                 <button class="btn-submit" id="submitModal">ĐĂNG</button>
                 <button class="btn-close" id="closeModal">ĐÓNG</button>
@@ -242,29 +226,25 @@
     </div>
 
     <script>
+        const modal = document.getElementById("modal");
+        const submitBtn = document.getElementById("submitModal");
+
+        document.getElementById("openModal").addEventListener("click", () => modal.classList.add("open"));
+        document.getElementById("closeModal").addEventListener("click", () => modal.classList.remove("open"));
+
         fetch('posts/posts.json')
             .then(r => r.json())
             .then(files => {
                 const list = document.getElementById('list');
-                files.forEach(file => {
-                    list.innerHTML += `<div><a href="post.html?file=${encodeURIComponent(file)}.md" class="box">${file}</a></div>`;
-                });
+                list.innerHTML = files.map(file =>
+                    `<div><a href="post.html?file=${encodeURIComponent(file)}.md" class="box glass">${file}</a></div>`
+                ).join('');
             });
-    </script>
-
-    <script>
-        const openBtn = document.getElementById("openModal");
-        const closeBtn = document.getElementById("closeModal");
-        const submitBtn = document.getElementById("submitModal");
-        const modal = document.getElementById("modal");
-
-        openBtn.addEventListener("click", () => modal.classList.add("open"));
-        closeBtn.addEventListener("click", () => modal.classList.remove("open"));
 
         submitBtn.addEventListener("click", async () => {
             const title = document.getElementById("titleInput").value;
             const content = document.getElementById("contentInput").value;
-            const key = document.getElementById("keyInput").value; // LẤY KEY
+            const key = document.getElementById("keyInput").value;
 
             if (!title || !content || !key) {
                 alert("Vui lòng nhập đủ tiêu đề, nội dung và key!");
@@ -278,22 +258,19 @@
                 const res = await fetch("https://sparkling-bonus-7dcb.dogiabao21112006.workers.dev", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ title, content, key }) // GỬI KEY
+                    body: JSON.stringify({ title, content, key })
                 });
-
                 const data = await res.json();
 
                 if (data.ok) {
                     alert("done");
-                    document.getElementById("titleInput").value = "";
-                    document.getElementById("contentInput").value = "";
-                    document.getElementById("keyInput").value = "";
+                    ["titleInput", "contentInput", "keyInput"].forEach(id => document.getElementById(id).value = "");
                     modal.classList.remove("open");
                     location.reload();
                 } else {
-                    alert(" Lỗi: " + data.error);
+                    alert("Lỗi: " + data.error);
                 }
-            } catch (err) {
+            } catch {
                 alert("Không kết nối được server");
             } finally {
                 submitBtn.textContent = "ĐĂNG";
@@ -301,6 +278,5 @@
             }
         });
     </script>
-
 </body>
 </html>
